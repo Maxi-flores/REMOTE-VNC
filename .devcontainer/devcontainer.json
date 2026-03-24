@@ -1,0 +1,11 @@
+{
+  "name": "Supreme Orbit Node",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "password": "vscode"
+    },
+    "ghcr.io/tailscale/codespace/tailscale:1": {}
+  },
+  "postCreateCommand": "sudo apt update && sudo apt install -y remmina remmina-plugin-rdp",
+  "forwardPorts": [6080]
+}
