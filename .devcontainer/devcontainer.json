@@ -1,11 +1,29 @@
 {
-  "name": "Supreme Orbit Node",
+  "name": "Supreme Remote Desktop",
   "features": {
     "ghcr.io/devcontainers/features/desktop-lite:1": {
-      "password": "vscode"
+      "password": "your_secure_password",
+      "webPort": 6080
     },
     "ghcr.io/tailscale/codespace/tailscale:1": {}
   },
-  "postCreateCommand": "sudo apt update && sudo apt install -y remmina remmina-plugin-rdp",
-  "forwardPorts": [6080]
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "Supreme VNC Desktop",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": ["ms-azuretools.vscode-docker"]
+    }
+  },
+  "runArgs": [
+    "--shm-size=1g" 
+  ],
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y remmina remmina-plugin-rdp"
 }
